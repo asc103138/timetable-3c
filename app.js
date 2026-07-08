@@ -522,3 +522,25 @@ document.addEventListener('DOMContentLoaded', () => {
     updateBackBtn();
     showView('loginView');
 });
+
+/* =====================================================================
+   訪客登入
+===================================================================== */
+async function guestLogin() {
+    const errEl    = document.getElementById('loginError');
+    const btn      = document.getElementById('guestBtn');
+    
+    errEl.textContent = '';
+    if (btn) btn.disabled = true;
+    
+    const semLabel = document.getElementById('semesterSelect')?.value || '';
+    
+    try {
+        await fetchAndParseCSV(semLabel);
+    } catch(err) {
+        errEl.textContent = '載入失敗，請確認資料檔是否存在。';
+    } finally {
+        if (btn) btn.disabled = false;
+    }
+}
+
