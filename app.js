@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =====================================================================
-   ³X«Èµn¤J
+   è¨ªå®¢ç™»å…¥
 ===================================================================== */
 async function guestLogin() {
     const errEl    = document.getElementById('loginError');
@@ -538,9 +538,8 @@ async function guestLogin() {
     try {
         await fetchAndParseCSV(semLabel);
     } catch(err) {
-        errEl.textContent = '¸ü¤J¥¢±Ñ¡A½Ğ½T»{¸ê®ÆÀÉ¬O§_¦s¦b¡C';
+        errEl.textContent = 'è¼‰å…¥å¤±æ•—ï¼Œè«‹ç¢ºèªè³‡æ–™æª”æ˜¯å¦å­˜åœ¨ã€‚';
     } finally {
         if (btn) btn.disabled = false;
     }
 }
-
