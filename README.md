@@ -19,6 +19,8 @@
 ---
 
 ## 專案目錄結構 (AI 參考用)
+本專案內建了 `.agents/skills/timetable_generator` 技能包。若您的 AI 支援此技能標準（例如 Antigen 系統），只需把此 Repo 匯入您的環境，AI 將自動獲得「建置課表資料庫與網站」的標準化 SOP，自動處理所有繁瑣的資料轉換細節！
+
 ```
 timetable-demo/
 ├── index.html              # 系統入口與前端版面佈局
@@ -26,7 +28,8 @@ timetable-demo/
 ├── app.js                  # 核心邏輯（課表渲染、CSV解析、過濾）
 ├── config.js               # 系統設定檔（學期設定、網頁標題）
 ├── timetable_sample.csv    # CSV 資料表格式範例
-└── homerooms_sample.json   # 班級導師對應格式範例
+├── homerooms_sample.json   # 班級導師對應格式範例
+└── .agents/                # 內建 AI 技能庫 (包含資料轉換與建置 SOP)
 ```
 
 ## 功能特色
