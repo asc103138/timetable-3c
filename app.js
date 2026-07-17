@@ -216,14 +216,15 @@ function buildCategories() {
             }
     });
 
-    classGroups = { '七年級': [], '八年級': [], '九年級': [], '特殊班': [] };
+    classGroups = { '低年級': [], '中年級': [], '高年級': [], '特殊班': [] };
     [...allClasses].sort().forEach(cls => {
-        if      (/^7\d+$/.test(cls)) classGroups['七年級'].push(cls);
-        else if (/^8\d+$/.test(cls)) classGroups['八年級'].push(cls);
-        else if (/^9\d+$/.test(cls)) classGroups['九年級'].push(cls);
+        const grade = parseInt(cls);
+        if      (grade >= 1 && grade <= 3) classGroups['低年級'].push(cls);
+        else if (grade >= 4 && grade <= 6) classGroups['中年級'].push(cls);
+        else if (grade >= 7 && grade <= 9) classGroups['高年級'].push(cls);
         else classGroups['特殊班'].push(cls);
     });
-    ['七年級','八年級','九年級'].forEach(g => {
+    ['低年級','中年級','高年級'].forEach(g => {
         classGroups[g].sort((a, b) => parseInt(a) - parseInt(b));
     });
     classGroups['特殊班'].sort();
@@ -253,9 +254,9 @@ function normalizeSubject(subj) {
    填充查詢 UI
 ═══════════════════════════════════════════════════════════ */
 function populateQueryUI() {
-    populateGradeSelect('sel7',  classGroups['七年級']);
-    populateGradeSelect('sel8',  classGroups['八年級']);
-    populateGradeSelect('sel9',  classGroups['九年級']);
+    populateGradeSelect('sel7',  classGroups['低年級']);
+    populateGradeSelect('sel8',  classGroups['中年級']);
+    populateGradeSelect('sel9',  classGroups['高年級']);
     populateGradeSelect('selSp', classGroups['特殊班']);
 
     const subjectSel = document.getElementById('subjectSelect');
@@ -290,7 +291,17 @@ function switchTab(tab) {
 
 /* ═══════════════════════════════════════════════════════════
    班級查詢
-═══════════════════════════════════════════════════════════ */
+═════════════════════════════════════════════════════════════ */
+function onGradeSelect(el, ...otherIds) {
+    if (el.value) {
+        otherIds.forEach(id => {
+            const sel = document.getElementById(id === 'sp' ? 'selSp' : 'sel' + id);
+            if (sel) sel.value = '';
+        });
+    }
+    document.getElementById('classError').textContent = '';
+}
+
 function setupGradeSelects() {
     const gradeMap = {
         sel7:  ['sel8','sel9','selSp'],
