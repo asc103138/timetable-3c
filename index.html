@@ -80,28 +80,19 @@
             <!-- 班級查詢 -->
             <div id="panelClass" class="tab-panel">
                 <div class="grade-group">
-                    <div class="grade-label grade-7">低年級</div>
-                    <select id="sel7" class="form-control grade-select" onchange="onGradeSelect(this,'8','9','sp')">
+                    <div class="grade-label grade-7">三年級</div>
+                    <select id="sel7" class="form-control grade-select">
                         <option value="">— 選擇班級 —</option>
                     </select>
                 </div>
-                <div class="grade-group">
-                    <div class="grade-label grade-8">中年級</div>
-                    <select id="sel8" class="form-control grade-select" onchange="onGradeSelect(this,'7','9','sp')">
-                        <option value="">— 選擇班級 —</option>
-                    </select>
+                <div class="grade-group" style="display:none">
+                    <select id="sel8" class="form-control grade-select"><option value=""></option></select>
                 </div>
-                <div class="grade-group">
-                    <div class="grade-label grade-9">高年級</div>
-                    <select id="sel9" class="form-control grade-select" onchange="onGradeSelect(this,'7','8','sp')">
-                        <option value="">— 選擇班級 —</option>
-                    </select>
+                <div class="grade-group" style="display:none">
+                    <select id="sel9" class="form-control grade-select"><option value=""></option></select>
                 </div>
-                <div class="grade-group">
-                    <div class="grade-label grade-sp">特殊班</div>
-                    <select id="selSp" class="form-control grade-select" onchange="onGradeSelect(this,'7','8','9')">
-                        <option value="">— 選擇班級 —</option>
-                    </select>
+                <div class="grade-group" style="display:none">
+                    <select id="selSp" class="form-control grade-select"><option value=""></option></select>
                 </div>
                 <div id="classError" class="alert alert-warning"></div>
                 <button class="btn btn-success btn-block" style="margin-top:1rem" onclick="submitClassQuery()">
