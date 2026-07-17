@@ -216,18 +216,10 @@ function buildCategories() {
             }
     });
 
-    classGroups = { '低年級': [], '中年級': [], '高年級': [], '特殊班': [] };
+    classGroups = { '三年級': [] };
     [...allClasses].sort().forEach(cls => {
-        const grade = parseInt(cls);
-        if      (grade >= 1 && grade <= 3) classGroups['低年級'].push(cls);
-        else if (grade >= 4 && grade <= 6) classGroups['中年級'].push(cls);
-        else if (grade >= 7 && grade <= 9) classGroups['高年級'].push(cls);
-        else classGroups['特殊班'].push(cls);
+        classGroups['三年級'].push(cls);
     });
-    ['低年級','中年級','高年級'].forEach(g => {
-        classGroups[g].sort((a, b) => parseInt(a) - parseInt(b));
-    });
-    classGroups['特殊班'].sort();
 
     // ── 科目→教師分類（含早自習）──
     subjectTeachers = {};
@@ -254,7 +246,7 @@ function normalizeSubject(subj) {
    填充查詢 UI
 ═══════════════════════════════════════════════════════════ */
 function populateQueryUI() {
-    populateGradeSelect('sel7',  classGroups['低年級']);
+    populateGradeSelect('sel7',  classGroups['三年級']);
     populateGradeSelect('sel8',  classGroups['中年級']);
     populateGradeSelect('sel9',  classGroups['高年級']);
     populateGradeSelect('selSp', classGroups['特殊班']);
